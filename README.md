@@ -129,21 +129,6 @@ Acompanhe os logs dos consumidores e as filas no RabbitMQ Management UI. **O gat
 - **Dead Letter Queue (DLQ):** destino para mensagens rejeitadas, quando a topologia está corretamente configurada.
 - **Desacoplamento:** o produtor publica eventos sem chamar diretamente os consumidores.
 
-## Roadmap
-
-- [x] Separar serviços NestJS por responsabilidade
-- [x] Publicar eventos com `amqplib`
-- [x] Consumir eventos com `@EventPattern()`
-- [x] Implementar retry local no processamento de pagamentos
-- [x] Implementar ACK/NACK no consumidor de pagamentos
-- [ ] Validar provisionamento da DLX, bindings e redirecionamento real para DLQ
-- [ ] Implementar confirmação de publicação (publisher confirms)
-- [ ] Persistir pedidos, pagamentos e estoque em bancos de dados
-- [ ] Implementar idempotência de consumidores
-- [ ] Adicionar correlation IDs, logs estruturados e tracing
-- [ ] Criar testes de integração e testes end-to-end com RabbitMQ
-- [ ] Evoluir o tratamento de falhas e estratégias de recuperação
-
 ## Limitações conhecidas
 
 O projeto ainda não persiste pedidos, não reserva estoque e não executa pagamentos reais. A implementação de retry ocorre **dentro do consumidor**, não por filas de retry. O serviço de DLQ registra mensagens, mas não as reprocessa. Além disso, a topologia completa de dead lettering não é provisionada explicitamente no código do produtor nem no Compose. Esses pontos estão mapeados para futuras evoluções.
@@ -153,7 +138,6 @@ O projeto ainda não persiste pedidos, não reserva estoque e não executa pagam
 - [Documentação oficial — NestJS Microservices](https://docs.nestjs.com/microservices/basics)
 - [Documentação oficial — NestJS RabbitMQ](https://docs.nestjs.com/microservices/rabbitmq)
 - [RabbitMQ Tutorials](https://www.rabbitmq.com/tutorials)
-- [Booking Microservices NestJS — referência de organização](https://github.com/meysamhadeli/booking-microservices-nestjs)
 
 ---
 
