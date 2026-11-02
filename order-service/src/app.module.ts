@@ -1,9 +1,13 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { OrderModule } from './order/order.module';
 
 @Module({
-  imports: [OrderModule],
-  controllers: [],
-  providers: [],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    OrderModule,
+  ],
 })
-export class AppModule {}
+export class AppModule {};
