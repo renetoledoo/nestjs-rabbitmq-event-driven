@@ -33,7 +33,7 @@ export class RabbitMQProvider implements OnModuleInit, OnModuleDestroy {
       data: message,
     };
 
-    return this.channel.publish(
+    const resultPublish = this.channel.publish(
       exchange,
       routingKey,
       Buffer.from(JSON.stringify(newMessage)),
@@ -42,5 +42,8 @@ export class RabbitMQProvider implements OnModuleInit, OnModuleDestroy {
         contentType: 'application/json',
       },
     );
+
+    console.log('Return Publish ', resultPublish);
+    return resultPublish;
   }
 }

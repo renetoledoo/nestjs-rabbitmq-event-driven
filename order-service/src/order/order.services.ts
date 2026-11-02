@@ -12,6 +12,17 @@ export class OrderService {
       'orders.created',
       order,
     );
-    return orderCreated;
+
+    if (orderCreated) {
+      return {
+        status: 'success',
+        msg: 'order created',
+      };
+    } else {
+      return {
+        status: 'failed',
+        msg: 'order failed',
+      };
+    }
   }
 }

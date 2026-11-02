@@ -15,7 +15,7 @@ async function bootstrap() {
       queue: 'inventory.orders.created',
       exchange: 'orders.exchange',
       exchangeType: 'topic',
-      rountingKey: 'order.created',
+      routingKey: 'orders.created',
       queueOptions: {
         durable: true,
       },

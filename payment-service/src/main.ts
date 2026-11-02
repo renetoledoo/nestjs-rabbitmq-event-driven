@@ -15,12 +15,14 @@ async function bootstrap() {
       queue: 'payment.orders.created',
       exchange: 'orders.exchange',
       exchangeType: 'topic',
-      rountingKey: 'order.created',
+      routingKey: 'orders.created',
       queueOptions: {
         durable: true,
+        deadLetterExchange: 'payment.dlx',
+        deadLetterRoutingKey: 'payment.failed',
       },
+      noAck: false,
     },
-    noAck: false,
   });
 
   await app.listen();
