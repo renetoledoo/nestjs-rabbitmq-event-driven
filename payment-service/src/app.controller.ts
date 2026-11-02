@@ -6,8 +6,8 @@ import { EventPattern } from '@nestjs/microservices';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @EventPattern('order.created')
+  @EventPattern('orders_create')
   payment(order: any) {
-    console.log(order);
+    console.log(order, ' -< payment SERVICE');
   }
 }
