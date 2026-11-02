@@ -10,7 +10,7 @@ export class OrderService {
   ) {}
 
   save(order: CreateOrderDto) {
-    this.client.emit('order_create', order);
-    console.log('Entrei no service');
+    const orderCreated = this.client.emit('order_create', order);
+    return orderCreated;
   }
 }

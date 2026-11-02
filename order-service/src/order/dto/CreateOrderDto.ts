@@ -4,7 +4,6 @@ import {
   IsInt,
   IsNotEmpty,
   IsNumber,
-  IsObject,
   IsString,
   Min,
   ValidateNested,
@@ -13,14 +12,14 @@ import {
 class ItemDto {
   @IsString()
   @IsNotEmpty()
-  produtId: string;
-
-  @IsNumber()
-  quantity: number;
+  productId: string;
 
   @IsNumber()
   @IsInt()
   @Min(1)
+  quantity: number;
+
+  @IsNumber()
   unitPrice: number;
 }
 
@@ -52,6 +51,8 @@ export class CreateOrderDto {
   @Type(() => PaymentDto)
   payment: PaymentDto;
 
-  @IsObject()
+  @IsNotEmpty()
+  @ValidateNested()
+  @Type(() => DeliveryDto)
   delivery: DeliveryDto;
 }
