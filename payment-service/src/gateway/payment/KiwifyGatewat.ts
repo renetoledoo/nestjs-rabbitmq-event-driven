@@ -2,7 +2,14 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class KiwifyGateway {
-  process(data: any) {
-    console.log('Inicando processo pagamento ', data);
+  async process(data: any) {
+    await new Promise(() => {
+      setTimeout(() => {
+        console.log('Simulando processo de pagamento com promise');
+      }, 4000);
+    });
+
+    throw new Error('Error on payment gateway');
+    console.log(data);
   }
 }

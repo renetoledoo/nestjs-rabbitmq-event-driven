@@ -7,7 +7,7 @@ import { CreateOrderDto } from './dto/CreateOrderDto';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @EventPattern('orders_create')
+  @EventPattern('orders.create')
   payment(order: CreateOrderDto) {
     return this.appService.process(order);
   }

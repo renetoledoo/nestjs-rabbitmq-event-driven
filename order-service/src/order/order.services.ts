@@ -8,8 +8,8 @@ export class OrderService {
 
   save(order: CreateOrderDto) {
     const orderCreated = this.rabbitMqProvider.publish(
-      'order.exchanges',
-      'order.created',
+      'orders.exchange',
+      'orders.created',
       order,
     );
     return orderCreated;
